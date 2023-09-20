@@ -104,5 +104,17 @@ class DoublyLinkedList {
         newNext.prev = newNode
         return true
     }
+    remove(index){
+        if(index < 0 || index >= this.length) return undefined
+        if(index === 0) return this.shift()
+        if(index === this.length - 1) return this.pop()
+        let found = this.get(index)
+        found.next.prev = found.prev
+        found.prev.next = found.next
+        found.next = null
+        found.prev = null
+        this.length -= 1
+        return found
+    }
 }
 
