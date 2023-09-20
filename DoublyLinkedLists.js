@@ -93,5 +93,16 @@ class DoublyLinkedList {
         found.value = value
         return true
     }
+    insert(index, value){
+        if(index < 0 || index > this.length) return false
+        if(index === 0) return this.unshift(value)
+        if(index === this.length) return this.push(value)
+        let newNode = new Node(value)
+        let newNext = this.get(index)
+        newNode.next = newNext
+        newNode.prev = newNext.prev
+        newNext.prev = newNode
+        return true
+    }
 }
 
