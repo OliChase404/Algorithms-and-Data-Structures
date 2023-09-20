@@ -31,14 +31,28 @@ class DoublyLinkedList {
         if (this.length === 0) return undefined
         let popped = this.tail
         if (this.length === 1){
-            this.head = undefined
-            this.tail = undefined
+            this.head = null
+            this.tail = null
         } else {
             this.tail = popped.prev
             this.tail.next = null
         }
         this.length -= 1
         return popped
+    }
+    shift(){
+        if(this.length === 0) return undefined
+        let shifted = this.head 
+        if(this.length === 1){
+            this.head = null
+            this.tail = null
+        } else {
+            this.head = shifted.next
+            this.head.prev = null
+            shifted.next = null
+        }
+        this.length -= 1
+        return shifted
     }
 }
 
