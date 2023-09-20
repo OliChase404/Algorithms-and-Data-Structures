@@ -66,5 +66,26 @@ class DoublyLinkedList {
         this.length += 1
         return newNode
     }
+    get(index){
+        if(this.length <= 0 || index >= this.length) return undefined
+        let found
+        let i
+        if(index >= (this.length - 1) / 2){
+            i = (this.length - 1) - index
+            found = this.tail
+            while(i !== 0){
+                found = found.prev
+                i -= 1
+            }
+        } else {
+            i = 0
+            found = this.head
+            while(i < index){
+                found = found.next
+                i += 1
+            }
+        }
+        return found
+    }
 }
 
