@@ -78,7 +78,7 @@ class SinglyLinkedList{
         return this
     }
     get(index){
-        if(this.length < index || index < 0){
+        if((this.length - 1) < index || index < 0){
             return undefined
         }
         let currentIndex = 0
@@ -87,5 +87,35 @@ class SinglyLinkedList{
             currentNode = currentNode.next
         }
         return currentNode
+    }
+    set(index, value){
+        let found = this.get(index)
+        if(!found) return false
+        found.value = value
+        return true
+    }
+    insert(index, value){
+        let toReplace = this.get(index)
+        if(!toReplace) return false
+        if(index === this.length){
+            this.push(value)
+            return true
+        }
+        if(index === 0){
+            this.unshift(value)
+            return true
+        }
+        this.get(index - 1).next = val
+        const newNode = new Node(value)
+        newNode.next = this.get(index)
+        this.length += 1
+        return true
+    }
+    remove(index){
+        let found = this.get(index)
+        if(!found) return false
+        this.get(index - 1).next = found.next
+        this.length -= 1
+        return true
     }
 }
