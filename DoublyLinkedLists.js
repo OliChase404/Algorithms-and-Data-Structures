@@ -87,5 +87,11 @@ class DoublyLinkedList {
         }
         return found
     }
+    set(index, value){
+        found = this.get(index)
+        if(!found) return false
+        found.value = value
+        return true
+    }
 }
 
